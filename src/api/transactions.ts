@@ -7,7 +7,7 @@ export interface Transaction {
     name: string;
     value: number;
     status: TransactionStatus;
-    date: string;
+    date: string | Date;
 }
 
 export interface TransactionQueryParams {
@@ -19,6 +19,8 @@ export interface TransactionQueryParams {
     size?: number;
     sort?: string; // e.g., "date,desc"
 }
+
+export type CreateTransactionPayload = Omit<Transaction, 'id'>;
 
 // Base Axios instance
 const api = axios.create({
@@ -39,8 +41,8 @@ export const getTransactionById = async (id: number) => {
 };
 
 // CREATE
-export const createTransaction = async (transaction: Transaction) => {
-    const response = await api.post('/', transaction);
+export const createTransaction = async (transaction: CreateTransactionPayload) => {
+    const response = await api.post('', transaction);
     return response.data;
 };
 

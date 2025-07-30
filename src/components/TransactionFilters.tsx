@@ -11,8 +11,8 @@ type Props = {
 const statusOptions = [
     { value: '', label: 'Todos' },
     { value: 'PENDING', label: 'Pendiente' },
-    { value: 'COMPLETED', label: 'Completado' },
-    { value: 'FAILED', label: 'Fallido' },
+    { value: 'PAID', label: 'Pagado' },
+    { value: 'REJECTED', label: 'Fallido' },
 ];
 
 export const TransactionFilters: React.FC<Props> = ({ filters, onChange }) => {
