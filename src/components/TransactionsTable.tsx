@@ -80,7 +80,7 @@ export const TransactionsTable: React.FC = () => {
     if (!data) {
         return <p>No records found.</p>;
     }
-
+    console.log(filters);
     return (
         <>
             <TransactionFilters

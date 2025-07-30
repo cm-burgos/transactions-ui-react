@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export type TransactionStatus = 'PENDING' | 'PAID' | 'REJECTED';
+export type TransactionStatus = 'PENDING' | 'PAID' | 'REJECTED' | "all";
 
 export interface Transaction {
     id: number;

@@ -58,7 +58,6 @@ export const PayTransactionsButton: React.FC = () => {
                             value={paymentValue}
                             onChange={(e) => setPaymentValue(Number(e.target.value))}
                             required
-                            inputProps={{ min: 0, step: '0.01' }}
                         />
                         {error && <Alert severity="error">{error}</Alert>}
                     </Stack>
@@ -70,7 +69,7 @@ export const PayTransactionsButton: React.FC = () => {
                     <Button
                         onClick={handleSubmit}
                         variant="contained"
-                        disabled={mutation.isPending}
+                        disabled={mutation.isPending || paymentValue === ''}
                     >
                         Confirmar Pago
                     </Button>
