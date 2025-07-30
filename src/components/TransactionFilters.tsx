@@ -18,7 +18,6 @@ const statusOptions = [
 export const TransactionFilters: React.FC<Props> = ({ filters, onChange }) => {
     const [debouncedName, setDebouncedName] = useState(filters.name || '');
 
-    // Este efecto actualiza el valor externo con debounce
     useEffect(() => {
         const timeout = setTimeout(() => {
             onChange({ name: debouncedName });
@@ -27,7 +26,6 @@ export const TransactionFilters: React.FC<Props> = ({ filters, onChange }) => {
         return () => clearTimeout(timeout);
     }, [debouncedName]);
 
-    // Este efecto sincroniza el estado local si cambia desde afuera (por ejemplo, al resetear filtros)
     useEffect(() => {
         setDebouncedName(filters.name || '');
     }, [filters.name]);

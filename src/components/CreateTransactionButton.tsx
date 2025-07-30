@@ -17,12 +17,12 @@ export const CreateTransactionButton: React.FC = () => {
 
     const [form, setForm] = useState<{
         name: string;
-        value: number;
+        value: string; // <-- now string
         date: Date;
         status: TransactionStatus;
     }>({
         name: '',
-        value: 0,
+        value: '',
         date: new Date(),
         status: 'PENDING',
     });
@@ -36,7 +36,7 @@ export const CreateTransactionButton: React.FC = () => {
             setOpen(false);
             setForm({
                 name: '',
-                value: 0,
+                value: '',
                 date: new Date(),
                 status: 'PENDING',
             });
@@ -49,14 +49,26 @@ export const CreateTransactionButton: React.FC = () => {
         const { name, value } = e.target;
         setForm((prev) => ({
             ...prev,
-            [name]: name === 'value' ? Number(value) : value,
+            [name]: value,
         }));
     };
 
+    const isFormValid =
+        form.name.trim() !== '' &&
+        form.value.trim() !== '' &&
+        !isNaN(Number(form.value)) &&
+        Number(form.value) > 0 &&
+        form.date instanceof Date &&
+        !isNaN(form.date.getTime());
+
     const handleSubmit = () => {
+        if (!isFormValid) return;
+
         mutation.mutate({
-            ...form,
-            date: form.date.toISOString(), // send as ISO 8601 with local time interpreted
+            name: form.name.trim(),
+            value: Number(form.value),
+            date: form.date.toISOString(), // local time will be interpreted
+            status: form.status,
         });
     };
 
@@ -74,6 +86,7 @@ export const CreateTransactionButton: React.FC = () => {
                             name="name"
                             value={form.name}
                             onChange={handleChange}
+                            required
                             fullWidth
                         />
                         <TextField
@@ -82,6 +95,7 @@ export const CreateTransactionButton: React.FC = () => {
                             type="number"
                             value={form.value}
                             onChange={handleChange}
+                            required
                             fullWidth
                         />
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -108,6 +122,7 @@ export const CreateTransactionButton: React.FC = () => {
                             value={form.status}
                             onChange={handleChange}
                             fullWidth
+                            required
                         >
                             {statuses.map((s) => (
                                 <MenuItem key={s} value={s}>
@@ -126,7 +141,11 @@ export const CreateTransactionButton: React.FC = () => {
                     <Button onClick={() => setOpen(false)} color="secondary">
                         Cancelar
                     </Button>
-                    <Button onClick={handleSubmit} variant="contained" disabled={mutation.isPending}>
+                    <Button
+                        onClick={handleSubmit}
+                        variant="contained"
+                        disabled={!isFormValid || mutation.isPending}
+                    >
                         Guardar
                     </Button>
                 </DialogActions>
