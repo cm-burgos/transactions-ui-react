@@ -9,10 +9,10 @@ const theme = createTheme({
             contrastText: '#FFFFFF',
         },
         secondary: {
-            main: '#FF6A5C',
-            light: '#FF8C7F',
-            dark: '#CC5448',
-            contrastText: '#FFFFFF',
+            main: '#FFA726',       // Medium orange (Material Amber 600)
+            light: '#FFCC80',      // Lighter orange (Amber 300)
+            dark: '#FB8C00',       // Deeper orange (Amber 800)
+            contrastText: '#FFFFFF'
         },
         background: {
             default: '#FFFFFF',

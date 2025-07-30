@@ -58,7 +58,7 @@ export const deleteTransaction = async (id: number) => {
 };
 
 // PAY
-export const payTransaction = async (id: number, payment: PaymentRequest) => {
-    const response = await api.post(`/${id}/pay`, payment);
+export const payTransactions = async (params: {paymentValue: number}) => {
+    const response = await api.post(`/pay`, params);
     return response.data;
 };

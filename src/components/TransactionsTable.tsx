@@ -55,7 +55,9 @@ export const TransactionsTable: React.FC = () => {
     const deleteMutation = useMutation({
         mutationFn: deleteTransaction,
         onSuccess: () => {
+            setConfirmDeleteId(null);
             queryClient.invalidateQueries({ queryKey: ['transactions'] });
+
         },
     });
 
@@ -159,9 +161,7 @@ export const TransactionsTable: React.FC = () => {
                     message={`¿Estás seguro de eliminar la transacción #${confirmDeleteId}?`}
                     onClose={() => setConfirmDeleteId(null)}
                     onConfirm={() => {
-                        deleteMutation.mutate(confirmDeleteId, {
-                            onSettled: () => setConfirmDeleteId(null)
-                        });
+                        deleteMutation.mutate(confirmDeleteId);
                     }}
                 />
             )}
