@@ -9,6 +9,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 
 import { createTransaction, TransactionStatus } from '../api/transactions';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import {STATUS_TRANSLATIONS} from "./TransactionsTable";
 
 const statuses: TransactionStatus[] = ['PENDING', 'PAID', 'REJECTED'];
 
@@ -126,7 +127,7 @@ export const CreateTransactionButton: React.FC = () => {
                         >
                             {statuses.map((s) => (
                                 <MenuItem key={s} value={s}>
-                                    {s}
+                                    {STATUS_TRANSLATIONS[s]}
                                 </MenuItem>
                             ))}
                         </TextField>

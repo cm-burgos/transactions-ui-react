@@ -11,7 +11,7 @@ import { cleanParams } from '../utils';
 import { EditTransactionDialog } from './EditTransactionDialog';
 import {useMutation, useQueryClient } from "@tanstack/react-query";
 import {ConfirmActionDialog} from "./ConfirmActionDialog";
-const STATUS_TRANSLATIONS = {
+export const STATUS_TRANSLATIONS = {
    PENDING: "Pendiente",
    PAID: "Pagado",
    REJECTED: "Fallida",
