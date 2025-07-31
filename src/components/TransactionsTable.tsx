@@ -80,7 +80,7 @@ export const TransactionsTable: React.FC = () => {
     if (!data) {
         return <p>No records found.</p>;
     }
-    console.log(filters);
+
     return (
         <>
             <TransactionFilters
@@ -92,9 +92,12 @@ export const TransactionsTable: React.FC = () => {
                     <Table stickyHeader>
                         <TableHead>
                             <TableRow>
-                                {columns.map((column) => (
-                                    <TableCell key={column.id}>{column.label}</TableCell>
-                                ))}
+                                <TableCell data-testid="header-id">ID</TableCell>
+                                <TableCell data-testid="header-name">Nombre</TableCell>
+                                <TableCell data-testid="header-value">Valor</TableCell>
+                                <TableCell data-testid="header-date">Fecha</TableCell>
+                                <TableCell data-testid="header-status">Estado</TableCell>
+                                <TableCell data-testid="header-actions"></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -129,7 +132,7 @@ export const TransactionsTable: React.FC = () => {
                             {data.content.length === 0 && (
                                 <TableRow>
                                     <TableCell colSpan={6} align="center">
-                                        No transactions found.
+                                        No se encontraron transacciones.
                                     </TableCell>
                                 </TableRow>
                             )}

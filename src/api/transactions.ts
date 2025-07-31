@@ -23,7 +23,7 @@ export interface TransactionQueryParams {
 export type CreateTransactionPayload = Omit<Transaction, 'id'>;
 
 // Base Axios instance
-const api = axios.create({
+export const api = axios.create({
     baseURL: "http://localhost:8085/api/transactions",
 });
 

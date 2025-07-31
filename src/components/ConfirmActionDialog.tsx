@@ -28,7 +28,7 @@ export const ConfirmActionDialog: React.FC<Props> = ({
     onClose
 }) => {
     return (
-        <Dialog open={open} onClose={onClose}>
+        <Dialog open={open} onClose={onClose} data-testid="confirm-dialog">
             <DialogTitle>{title}</DialogTitle>
             <DialogContent>
                 <Typography>{message}</Typography>

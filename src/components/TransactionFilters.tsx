@@ -43,6 +43,7 @@ export const TransactionFilters: React.FC<Props> = ({ filters, onChange }) => {
     return (
         <Box display="flex" gap={2} mb={2}>
             <TextField
+                data-testid="name-filter"
                 label="Nombre"
                 value={debouncedName}
                 onChange={(e) => setDebouncedName(e.target.value)}
@@ -50,6 +51,7 @@ export const TransactionFilters: React.FC<Props> = ({ filters, onChange }) => {
                 size="small"
             />
             <TextField
+                data-testid="status-filter"
                 select
                 label="Estado"
                 value={filters.status ?? 'ALL'}
@@ -68,6 +70,7 @@ export const TransactionFilters: React.FC<Props> = ({ filters, onChange }) => {
                 ))}
             </TextField>
             <TextField
+                data-testid="from-date-filter"
                 label="Desde"
                 type="date"
                 value={filters.from ?? ''}
@@ -77,6 +80,7 @@ export const TransactionFilters: React.FC<Props> = ({ filters, onChange }) => {
                 InputLabelProps={{ shrink: true }}
             />
             <TextField
+                data-testid="to-date-filter"
                 label="Hasta"
                 type="date"
                 value={filters.to ?? ''}
@@ -85,9 +89,14 @@ export const TransactionFilters: React.FC<Props> = ({ filters, onChange }) => {
                 size="small"
                 InputLabelProps={{ shrink: true }}
             />
-            <Button variant="outlined" color="secondary" onClick={handleClear}>
-      Limpiar
-    </Button>
+            <Button 
+                data-testid="clear-filters-button"
+                variant="outlined" 
+                color="secondary" 
+                onClick={handleClear}
+            >
+                Limpiar
+            </Button>
         </Box>
     );
 };
