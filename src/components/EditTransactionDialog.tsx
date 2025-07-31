@@ -6,7 +6,7 @@ import {
 import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import {deleteTransaction, Transaction, TransactionStatus, updateTransaction} from '../api/transactions';
+import { Transaction, TransactionStatus, updateTransaction} from '../api/transactions';
 
 type Props = {
     transaction: Transaction;

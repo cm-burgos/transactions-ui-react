@@ -12,7 +12,7 @@ const statusOptions = [
     { value: 'ALL', label: 'Todos' },
     { value: 'PENDING', label: 'Pendiente' },
     { value: 'PAID', label: 'Pagado' },
-    { value: 'REJECTED', label: 'Fallido' },
+    { value: 'REJECTED', label: 'Fallida' },
 ];
 
 export const TransactionFilters: React.FC<Props> = ({ filters, onChange }) => {
@@ -34,7 +34,7 @@ export const TransactionFilters: React.FC<Props> = ({ filters, onChange }) => {
         }, 500);
 
         return () => clearTimeout(timeout);
-    }, [debouncedName]);
+    }, [debouncedName, onChange]);
 
     useEffect(() => {
         setDebouncedName(filters.name || '');

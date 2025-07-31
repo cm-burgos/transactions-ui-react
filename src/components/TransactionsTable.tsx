@@ -11,16 +11,12 @@ import { cleanParams } from '../utils';
 import { EditTransactionDialog } from './EditTransactionDialog';
 import {useMutation, useQueryClient } from "@tanstack/react-query";
 import {ConfirmActionDialog} from "./ConfirmActionDialog";
-
-const columns = [
-    { id: 'id', label: 'ID' },
-    { id: 'name', label: 'Nombre' },
-    { id: 'value', label: 'Valor' },
-    { id: 'date', label: 'Fecha' },
-    { id: 'status', label: 'Estado' },
-    { id: 'actions', label: '' },
-];
-
+const STATUS_TRANSLATIONS = {
+   PENDING: "Pendiente",
+   PAID: "Pagado",
+   REJECTED: "Fallida",
+   all: '',
+};
 export const TransactionsTable: React.FC = () => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -107,7 +103,7 @@ export const TransactionsTable: React.FC = () => {
                                     <TableCell>{row.name}</TableCell>
                                     <TableCell>{row.value}</TableCell>
                                     <TableCell>{new Date(row.date).toLocaleString()}</TableCell>
-                                    <TableCell>{row.status}</TableCell>
+                                    <TableCell>{STATUS_TRANSLATIONS[row.status]}</TableCell>
                                     <TableCell>
                                         {row.status !== 'PAID' && (
                                             <>
