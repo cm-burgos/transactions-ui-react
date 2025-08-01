@@ -25,5 +25,7 @@ A React + TypeScript web application for managing transactions — including cre
 | `npm start`     | Run dev server                 |
 | `npm test`      | Run unit and integration tests |
 
+Start by running npm install and then npm start to run the app
+
 
 

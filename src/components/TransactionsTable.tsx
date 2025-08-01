@@ -102,7 +102,7 @@ export const TransactionsTable: React.FC = () => {
                                     <TableCell>{row.id}</TableCell>
                                     <TableCell>{row.name}</TableCell>
                                     <TableCell>{row.value}</TableCell>
-                                    <TableCell>{new Date(row.date).toLocaleString()}</TableCell>
+                                    <TableCell>{new Date(row.date).toLocaleDateString('es-ES')}</TableCell>
                                     <TableCell>{STATUS_TRANSLATIONS[row.status]}</TableCell>
                                     <TableCell>
                                         {row.status !== 'PAID' && (
